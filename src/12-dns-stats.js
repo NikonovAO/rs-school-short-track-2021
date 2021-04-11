@@ -20,27 +20,36 @@
  * }
  *
  */
- function getDNSStats(domains) {
-  console.log(domains);
+function getDNSStats(domains) {
+  const dnsStats = {};
   const arrSite = [];
-  const arrayDomain = [];
-  let count = 0;
+  const subDomain = [];
   for (let i = 0; i < domains.length; i++) {
     arrSite[i] = domains[i].split('.');
   }
-  console.log(arrSite);
-  for (let i =0; i < arrSite.length; i++) {
-    let count = 0;
-    arrayDomain.push(arrSite[i][arrSite.length]);
+  for (let i = 0; i < arrSite.length; i++) {
+    arrSite[i].reverse();
   }
-  console.log(arrayDomain);
-
-  return 0;
+  for (let i = 0; i < arrSite.length; i++) {
+    subDomain[i] = [];
+    for (let j = 0; j < arrSite[i].length; j++) {
+      if (j === 0) {
+        subDomain[i][j] = `.${arrSite[i][j]}`;
+      } else {
+        subDomain[i][j] = `${subDomain[i][j - 1]}.${arrSite[i][j]}`;
+      }
+    }
+  }
+  for (let i = 0; i < subDomain.length; i++) {
+    for (let j = 0; j < subDomain[i].length; j++) {
+      if (subDomain[i][j] in dnsStats) {
+        dnsStats[subDomain[i][j]]++;
+      } else {
+        dnsStats[subDomain[i][j]] = 1;
+      }
+    }
+  }
+  return dnsStats;
 }
-console.log(getDNSStats([
-    'code.yandex.ru',
-    'music.yandex.ru',
-    'yandex.ru'
-   ]));
 
 module.exports = getDNSStats;
