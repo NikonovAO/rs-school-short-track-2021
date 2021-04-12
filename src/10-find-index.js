@@ -30,7 +30,7 @@ function findIndex(array, value) {
   if (array[endIndex] === value) {
     return endIndex;
   }
-  return undefined;
+  return startIndex;
 }
 
 module.exports = findIndex;
