@@ -17,7 +17,10 @@ function findIndex(array, value) {
 
   while ((endIndex - startIndex) > 1) {
     const centerIndex = Math.floor((endIndex + startIndex) / 2);
-    if (array[centerIndex] >= value) {
+    if (array[centerIndex] === value) {
+      return centerIndex;
+    }
+    if (array[centerIndex] > value) {
       endIndex = centerIndex;
     } else {
       startIndex = centerIndex;
