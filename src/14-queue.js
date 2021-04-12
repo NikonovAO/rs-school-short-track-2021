@@ -11,18 +11,17 @@
  *
  */
 
-class Queue {
+/* class Queue {
   get size() {
-    throw new Error('Not implemented');
-  }
 
-  enqueue(/* element */) {
-    throw new Error('Not implemented');
+  } */
+
+/* enqueue(element) {
   }
 
   dequeue() {
-    throw new Error('Not implemented');
-  }
-}
 
-module.exports = Queue;
+  }
+} */
+
+/* module.exports = Queue; */
